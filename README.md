@@ -7,7 +7,7 @@
   <a href="https://www.figma.com/c/plugin/783077214649465682/Text-Prettier" rel="noopener" target="_blank">
     <img src="https://www.figma.com/c/plugin/783077214649465682/thumbnail"  alt="info" width=870 height=430>
   </a>
-  <h4 align="center">
+  <h3 align="center">
  Figma plugin to make text legible, readable,<br/> and appealing when displayed.   
   </h4>
 </p>
