@@ -3,13 +3,11 @@
   <a href="https://www.figma.com/c/plugin/783077214649465682/Text-Prettier" rel="noopener" target="_blank">
     <img src="https://www.figma.com/c/plugin/783077214649465682/thumbnail"  alt="info" width=870 height=430>
   </a>
-</p>
+
   <a href="https://www.figma.com/c/plugin/783077214649465682/Text-Prettier" rel="noopener" target="_blank">
-  <h1 align="center">TextPrettier</h1>
+  <h1 align="center">TextPrettier <img src="./assets/logo.png"  alt="Logo" width=72 height=72></h1> 
   </a>
-  <p align="center"> <a href="https://www.figma.com/c/plugin/783077214649465682/Text-Prettier" rel="noopener" target="_blank">
-    <img src="./assets/logo.png"  alt="Logo" width=72 height=72>
-  </a>
+
   <h4 align="center">
  Figma plugin to make text legible, readable,<br/> and appealing when displayed.   
   </h4>
