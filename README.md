@@ -32,7 +32,7 @@ It is currently not possible to use local builds of a plugin through the web int
 ### Installation
  This plugin uses Typescript and Webpack.
 
-#### Installation from official Figma Plugin store
+#### Installation from official Figma Plugin store (recommended)
 
 [figma.com/Text-Prettier](https://www.figma.com/c/plugin/783077214649465682/Text-Prettier)
 
