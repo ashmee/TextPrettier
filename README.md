@@ -1,5 +1,7 @@
 ---
-<p align="center"><img src="./assets/logo.png"  alt="Logo" width=72 height=72></p>
+<a href="https://www.figma.com/c/plugin/783077214649465682/Text-Prettier" rel="noopener" target="_blank">
+ <p align="center"><img src="./assets/logo.png"  alt="Logo" width=72 height=72></p>
+ </a>
  <a href="https://www.figma.com/c/plugin/783077214649465682/Text-Prettier" rel="noopener" target="_blank">
   <h1 align="center">TextPrettier </h1> 
   </a>
