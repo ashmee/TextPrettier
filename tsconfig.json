@@ -1,10 +1,7 @@
 {
-  "compilerOptions": {
-    "target": "es6",
-    "allowSyntheticDefaultImports": true,
-    "typeRoots": [
-      "./node_modules/@types",
-      "./node_modules/@figma"
-    ]
-  }
+    "compilerOptions": {
+        "target": "es6",
+        "allowSyntheticDefaultImports": true,
+        "typeRoots": ["./node_modules/@types", "./node_modules/@figma"]
+    }
 }

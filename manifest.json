@@ -1,6 +1,13 @@
 {
-  "name": "TextPrettier",
-  "id": "783077214649465682",
-  "api": "1.0.0",
-  "main": "./dist/code.js"
+    "name": "Text Prettier",
+    "id": "783077214649465682",
+    "api": "1.0.0",
+    "main": "./dist/code.js",
+    "menu": [
+        { "name": "Run TextPrettier on selected layers", "command": "pretty" },
+        { "separator": true },
+        { "name": "Run TextPrettier on all file", "command": "prettyAll" },
+        { "separator": true },
+        { "name": "Settings", "command": "settings" }
+    ]
 }
