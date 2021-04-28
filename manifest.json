@@ -1,4 +1,5 @@
 {
+    "$schema": "https://www.unpkg.com/figma-plugin-manifest@1.0.1/schema.json",
     "name": "Text Prettier",
     "id": "783077214649465682",
     "api": "1.0.0",
