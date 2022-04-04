@@ -31,5 +31,5 @@ const emojis: string[] = [
     '',
 ]
 
-export const makeSuccsessMessage = (): string =>
+export const makeSuccessMessage = (): string =>
     `Done ${emojis[Math.floor(Math.random() * emojis.length)]}`

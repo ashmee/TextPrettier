@@ -1,5 +1,5 @@
 <a href="https://www.figma.com/community/plugin/783077214649465682/Text-Prettier" rel="noopener" target="_blank">
-  <p><img src="./assets/logo.png" alt="Logo" width="72" height="72" /></p>
+  <p><img src="./assets/logo.png" alt="Logo" width="128" height="128" /></p>
 </a>
 <a href="https://www.figma.com/community/plugin/783077214649465682/Text-Prettier" rel="noopener" target="_blank">
   <h1>TextPrettier</h1>

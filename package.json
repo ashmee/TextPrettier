@@ -1,29 +1,44 @@
 {
-    "name": "textprettier",
-    "version": "1.0.0",
-    "description": "Text Prettier for Figma Desktop App",
-    "main": "code.js",
-    "devDependencies": {
-        "@figma/plugin-typings": "^1.19.0",
-        "@types/lodash-es": "^4.17.4",
-        "copy-webpack-plugin": "^6.4.1",
-        "html-webpack-inline-source-plugin": "0.0.10",
-        "html-webpack-plugin": "^4.5.1",
-        "lodash-es": "^4.17.20",
-        "prettier": "2.2.1",
-        "terser-webpack-plugin": "^4.2.3",
-        "ts-loader": "^8.0.17",
-        "typescript": "^4.1.5",
-        "typograf": "^6.11.3",
-        "url-loader": "^4.1.1",
-        "webpack": "^4.46.0",
-        "webpack-cli": "^4.5.0"
-    },
-    "scripts": {
-        "build": "npx webpack --mode=production",
-        "watch": "npx webpack --mode=development --watch",
-        "pretty": "npx prettier --write ."
-    },
-    "author": "Eugene Ash",
-    "license": "ISC"
+  "name": "textprettier",
+  "version": "1.0.0",
+  "description": "Text Prettier for Figma Desktop App",
+  "main": "code.js",
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.43.0",
+    "@types/lodash-es": "^4.17.6",
+    "@types/node": "^16.11.11",
+    "copy-webpack-plugin": "^10.2.4",
+    "css-loader": "^6.7.1",
+    "html-webpack-inline-source-plugin": "^0.0.10",
+    "html-webpack-plugin": "^5.5.0",
+    "lodash-es": "^4.17.21",
+    "prettier": "^2.6.2",
+    "style-loader": "^3.3.1",
+    "terser-webpack-plugin": "^5.3.1",
+    "ts-loader": "^9.2.8",
+    "typescript": "^4.6.3",
+    "typograf": "^6.14.1",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.71.0",
+    "webpack-cli": "^4.9.2"
+  },
+  "dependencies": {
+    "@types/react": "^17.0.37",
+    "@types/react-dom": "^17.0.11",
+    "react": "^17.0.2",
+    "react-dev-utils": "^11.0.4",
+    "react-dom": "^17.0.2"
+  },
+  "scripts": {
+    "build": "npx webpack --mode=production",
+    "watch": "npx webpack --mode=development --watch",
+    "pretty": "npx prettier --write ."
+  },
+  "author": "Eugene Ash",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashmee/TextPrettier.git"
+  },
+  "homepage": "https://github.com/ashmee/TextPrettier#readme"
 }

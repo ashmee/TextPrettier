@@ -23,11 +23,7 @@ declare namespace typograf {
         isDisabledRule(rule: string): boolean
         getSetting(rule: string, setting: string): any
         setSetting(rule: string, setting: string, value: any): Typograf
-        addSafeTag(
-            startTag: string | RegExp,
-            endTag?: string,
-            middle?: string
-        ): Typograf
+        addSafeTag(startTag: string | RegExp, endTag?: string, middle?: string): Typograf
     }
 
     interface Options {
