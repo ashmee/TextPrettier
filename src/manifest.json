@@ -1,0 +1,13 @@
+{
+    "name": "Text Prettier",
+    "id": "783077214649465682",
+    "api": "1.0.0",
+    "editorType": ["figma"],
+    "main": "./code.js",
+    "menu": [
+        { "name": "Run TextPrettier", "command": "pretty" },
+        { "separator": true },
+        { "name": "⚙️ Settings", "command": "settings" }
+    ],
+    "ui": "./ui.html"
+}
