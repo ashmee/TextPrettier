@@ -14,11 +14,11 @@ figma.ui.onmessage = async (msg) => {
 }
 
 if (figma.command === 'settings') {
-    getPluginSettings().then((data) => {
-        figma.showUI(__html__, { width: 200, height: 200, visible: false })
-        figma.ui.postMessage(data)
-        figma.ui.show()
-    })
+    await figma.clientStorage.getAsync('TextPrettierPlugin')
+    const settings = await getPluginSettings()
+    figma.showUI(__html__, { width: 200, height: 200, visible: false, themeColors: true })
+    figma.ui.postMessage(settings)
+    figma.ui.show()
 }
 
 if (figma.command === 'pretty') {

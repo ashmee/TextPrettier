@@ -9,7 +9,9 @@ const webpack = require('webpack')
 module.exports = (env, argv) => ({
     mode: argv.mode === 'production' ? 'production' : 'development',
     devtool: argv.mode === 'production' ? false : 'inline-source-map',
-
+    experiments: {
+        topLevelAwait: true,
+    },
     entry: {
         ui: './src/ui.tsx',
         code: './src/code.ts',
@@ -19,8 +21,10 @@ module.exports = (env, argv) => ({
         rules: [
             {
                 test: /\.tsx?$/,
-                use: 'ts-loader',
-                exclude: /node_modules/,
+                exclude: /(node_modules)/,
+                use: {
+                    loader: 'swc-loader',
+                },
             },
             {
                 test: /\.css$/,

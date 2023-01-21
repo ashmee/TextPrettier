@@ -87,7 +87,7 @@ export const initAndPrettyText = async () => {
                     textNode.characters
                 )
                 figma.closePlugin(
-                    `Cant apply Figma styles on text: ${textNode.characters}. Try to choose this text manually`
+                    `Try to choose this text manually. Can't apply Figma styles on text: ${textNode.characters}. `
                 )
             }
         }
@@ -100,6 +100,7 @@ export const initAndPrettyText = async () => {
                 item.getRangeAllFontNames(0, item.characters.length).map(figma.loadFontAsync)
             )
         } catch (error) {
+            console.error('Cant load some font ', error)
             figma.closePlugin('Cant load some font')
         }
 
@@ -140,6 +141,8 @@ export const initAndPrettyText = async () => {
                     styleObject.push(currentCharacterStyle)
                 }
             } catch (error) {
+                console.error('Plugin cant get text styles from Figma ', error)
+
                 figma.closePlugin('Plugin cant get text styles from Figma')
             }
         }
