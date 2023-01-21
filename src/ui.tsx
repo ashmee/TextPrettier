@@ -1,46 +1,63 @@
 import * as React from 'react'
-import { useEffect } from 'react'
+import { useCallback, useLayoutEffect, useMemo } from 'react'
 import * as ReactDOM from 'react-dom'
 import { LOCALE } from './locales'
 import './ui.css'
+
+const getLangOptions = (): JSX.Element[] => {
+    const options = []
+    for (const [short, lang] of Object.entries(LOCALE)) {
+        options.push(
+            <option key={short} value={short}>
+                {lang}
+            </option>
+        )
+    }
+
+    return options
+}
 
 const App = () => {
     const [locale, setLocale] = React.useState('')
     const [digitGrouping, setDigitGrouping] = React.useState<boolean>(false)
     const [disabled, setDisabled] = React.useState<boolean>(false)
+    const needShowDigitGroupRule = locale === 'en-US' || locale === 'ru'
 
-    useEffect(() => {
-        window.addEventListener('message', (event: MessageEvent) => {
-            setLocale(
-                Array.isArray(event.data.pluginMessage.locale)
-                    ? event.data.pluginMessage.locale[0]
-                    : event.data.pluginMessage.locale
-            )
+    const handlePostMessage = useCallback((event: MessageEvent) => {
+        const msg = event.data.pluginMessage
+        setLocale(Array.isArray(msg.locale) ? msg.locale[0] : msg.locale)
 
-            setDigitGrouping(
-                event.data.pluginMessage?.enableRule?.includes('common/number/digitGrouping') ||
-                    false
-            )
-        })
+        setDigitGrouping(!!msg?.enableRule)
     }, [])
 
-    const updateSubmit = (event) => {
-        event.preventDefault()
-        setDisabled(true)
-        const data = new FormData(event.target)
-        const value = Object.fromEntries(data.entries())
-        const postData = {
-            locale: value.languages,
-            enableRule: digitGrouping && 'common/number/digitGrouping',
-        }
+    useLayoutEffect(() => {
+        window.addEventListener('message', handlePostMessage)
 
-        parent.postMessage(
-            {
-                pluginMessage: { type: 'updatePluginState', data: postData },
-            },
-            '*'
-        )
-    }
+        return () => {
+            window.removeEventListener('keydown', handlePostMessage)
+        }
+    }, [handlePostMessage])
+
+    const updateSubmit = useCallback(
+        (event) => {
+            event.preventDefault()
+            setDisabled(true)
+            const data = new FormData(event.target)
+            const value = Object.fromEntries(data.entries())
+            const postData = {
+                locale: value.languages,
+                enableRule: digitGrouping || value.digitGrouping === 'on',
+            }
+
+            parent.postMessage(
+                {
+                    pluginMessage: { type: 'updatePluginState', data: postData },
+                },
+                '*'
+            )
+        },
+        [digitGrouping]
+    )
 
     const handleChange = (event) => {
         setLocale(event.target.value)
@@ -50,15 +67,8 @@ const App = () => {
         setDigitGrouping((digitGrouping) => !digitGrouping)
     }
 
-    const options = []
-    for (const [short, lang] of Object.entries(LOCALE)) {
-        options.push(
-            <option key={short} value={short}>
-                {lang}
-            </option>
-        )
-    }
-    
+    const options = useMemo(() => getLangOptions(), [])
+
     return (
         <form id="pluginState" onSubmit={updateSubmit}>
             <label className="point" htmlFor="languages">
@@ -67,7 +77,7 @@ const App = () => {
             <select value={locale} onChange={handleChange} id="languages" name="languages">
                 {options}
             </select>
-            <label className="point">
+            <label className={`point ${needShowDigitGroupRule ? '' : 'hide'}`}>
                 Digit grouping
                 <input
                     className="switch"
