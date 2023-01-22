@@ -54,8 +54,13 @@ export const initAndPrettyText = async () => {
             try {
                 const nextIndex = index + 1
                 const textStyle = styleObject[index]?.textStyleId
+                const { listOptions, fills, fillStyleId } = styleObject[index]
                 if (textStyle) {
                     await textNode.setRangeTextStyleId(index, nextIndex, textStyle)
+                    await textNode.setRangeFills(index, nextIndex, fills)
+                    await textNode.setRangeListOptions(index, nextIndex, listOptions)
+                    fillStyleId &&
+                        (await textNode.setRangeFillStyleId(index, nextIndex, fillStyleId))
                 } else {
                     const {
                         fontName,
@@ -78,7 +83,8 @@ export const initAndPrettyText = async () => {
                     await textNode.setRangeLineHeight(index, nextIndex, lineHeight)
                     await textNode.setRangeListOptions(index, nextIndex, listOptions)
                     await textNode.setRangeIndentation(index, nextIndex, indentation)
-                    await textNode.setRangeFillStyleId(index, nextIndex, fillStyleId)
+                    fillStyleId &&
+                        (await textNode.setRangeFillStyleId(index, nextIndex, fillStyleId))
                 }
             } catch (error) {
                 console.error(
@@ -110,18 +116,19 @@ export const initAndPrettyText = async () => {
             const nextIndex = i + 1
             try {
                 const textStyleId = await item.getRangeTextStyleId(i, nextIndex)
+                const fills = await item.getRangeFills(i, nextIndex)
+                const fillStyleId = await item.getRangeFillStyleId(i, nextIndex)
+                const listOptions = await item.getRangeListOptions(i, nextIndex)
+
                 if (textStyleId) {
-                    styleObject.push({ textStyleId })
+                    styleObject.push({ textStyleId, fills, fillStyleId, listOptions })
                 } else {
                     const fontName = await item.getRangeFontName(i, nextIndex)
                     const fontSize = await item.getRangeFontSize(i, nextIndex)
                     const textCase = await item.getRangeTextCase(i, nextIndex)
                     const textDecoration = await item.getRangeTextDecoration(i, nextIndex)
                     const letterSpacing = await item.getRangeLetterSpacing(i, nextIndex)
-                    const fills = await item.getRangeFills(i, nextIndex)
-                    const fillStyleId = await item.getRangeFillStyleId(i, nextIndex)
                     const lineHeight = await item.getRangeLineHeight(i, nextIndex)
-                    const listOptions = await item.getRangeListOptions(i, nextIndex)
                     const indentation = await item.getRangeIndentation(i, nextIndex)
 
                     const currentCharacterStyle = {
