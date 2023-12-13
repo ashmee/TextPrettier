@@ -22,5 +22,5 @@ if (figma.command === 'settings') {
 }
 
 if (figma.command === 'pretty') {
-    initAndPrettyText()
+    void initAndPrettyText()
 }

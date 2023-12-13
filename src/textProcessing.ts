@@ -15,13 +15,27 @@ const initTP = async () => {
     return new Typograf(typografSettings)
 }
 
+const getTextNodes = (array = [], summary = []) => {
+    array.forEach((item) => {
+        if (item.type === 'TEXT') {
+            summary.push(item)
+        }
+
+        if (item?.children) {
+            getTextNodes(item?.children, summary)
+        }
+    })
+}
+
 const getSelectedTextNodes = () => {
     const selection = figma.currentPage.selection as SceneNode[]
 
     if (selection.length === 0) {
-        figma.closePlugin('Choose some text for typography.')
+        figma.closePlugin('Choose some text for typography')
     }
-    const textNodesSelection = selection.filter((item) => item.type === 'TEXT')
+
+    const textNodesSelection = []
+    getTextNodes(selection, textNodesSelection)
 
     if (textNodesSelection.length === 0) {
         figma.closePlugin(

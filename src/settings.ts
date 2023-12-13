@@ -21,10 +21,13 @@ export const setPluginSettings = async (config) => {
         } else if (config.locale === 'en-US') {
             await figma.clientStorage.setAsync('TextPrettierPlugin', {
                 locale: ['en-US', 'ru'],
-                enableRule: config.enableRule,
+                enableRule: undefined,
             })
         } else {
-            await figma.clientStorage.setAsync('TextPrettierPlugin', config)
+            await figma.clientStorage.setAsync('TextPrettierPlugin', {
+                locale: config.locale,
+                enableRule: undefined,
+            })
         }
     } catch (e) {
         console.error(`failed set data to figma client storage with locale ${config.locale}`, e)
@@ -34,7 +37,7 @@ export const setPluginSettings = async (config) => {
 export const getPluginSettings = async () => {
     try {
         const currentSettings = await figma.clientStorage.getAsync('TextPrettierPlugin')
-        if (!currentSettings || !currentSettings?.locale || currentSettings?.locale?.length === 0) {
+        if (!currentSettings?.locale || currentSettings?.locale?.length === 0) {
             await setPluginSettings(initSettings)
         }
         return currentSettings
